@@ -1,5 +1,7 @@
 # pollmakerfront
 
+Projeto Vue 2 - Todos os links de acesso chamam o servidor POLLMAKERBACK pelas urls fixas localhost:8080
+
 ## Project setup
 ```
 npm install
