@@ -103,7 +103,15 @@ export default {
                 this.answer.iduser = localStorage.idusuario;
                 this.answer.pollId = this.$route.params.idpoll;
 
-                this.axios.post('http://localhost:8080/pollmaker/answers/save-answer', this.answer )
+                let url = this.requireAuthenticationToAnswer ? 'http://localhost:8080/poll-maker/answers/save-answer-authenticated' : 'http://localhost:8080/pollmaker/answers/save-answer';
+                let header = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + (localStorage.token ? localStorage.token : '')
+                }
+
+                this.axios.post(url, this.answer, {
+                    headers: header
+                })
                 .then( x => {
                     if (x.status == 200){
 
